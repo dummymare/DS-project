@@ -19,7 +19,7 @@ y = dat['SALE PRICE']
 del dat['SALE PRICE']
 x = dat
 
-DTregressor = regr_2 = DecisionTreeRegressor(min_samples_split=30, min_samples_leaf=10)
+DTregressor = regr_2 = DecisionTreeRegressor(min_samples_split=10)
 model = DTregressor.fit(x, y)
 result = model.predict(x)
 
