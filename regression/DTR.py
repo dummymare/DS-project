@@ -13,11 +13,11 @@ dat = run.input_datasets['data'].to_pandas_dataframe()
 dat['SALE PRICE'] = np.log(dat['SALE PRICE'])
 dat['LAND SQUARE FEET'] = np.log(dat['LAND SQUARE FEET'])
 dat['GROSS SQUARE FEET'] = np.log(dat['GROSS SQUARE FEET'])
-dat = dat.loc[:, ['BOROUGH', 'NEIGHBORHOOD', 'BUILDING CLASS CATEGORY', 'TAX CLASS AT TIME OF SALE', 'RESIDENTIAL UNITS','COMMERCIAL UNITS','TOTAL UNITS','LAND SQUARE FEET','GROSS SQUARE FEET','YEAR BUILT','SALE PRICE', 'IS BUILDING CLASS CHANGED', 'IS TAX CLASS CHANGED']]
+dat = dat.loc[:, ['ZIP CODE','RESIDENTIAL UNITS','COMMERCIAL UNITS','TOTAL UNITS','LAND SQUARE FEET','GROSS SQUARE FEET','YEAR BUILT','SALE PRICE','BUILDING CLASS SALE QTF','TAX CODE','IS ']]
 
-y = dat['SALE PRICE'].values
+y = dat['SALE PRICE']
 del dat['SALE PRICE']
-x = dat.values
+x = dat
 
 DTregressor = regr_2 = DecisionTreeRegressor(min_samples_split=30, min_samples_leaf=10)
 model = DTregressor.fit(x, y)
