@@ -9,7 +9,7 @@ from sklearn.metrics import r2_score
 from sklearn.metrics import mean_squared_error
 from sklearn.metrics import mean_absolute_error
 
-run = Run.Run.get_context()
+run = Run.get_context()
 
 dataset = Dataset.get_by_name(ws, name='sales')
 dat = dataset.to_pandas_dataframe()
