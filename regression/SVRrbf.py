@@ -1,5 +1,6 @@
 from azureml.core import Run
 from azureml.core import Dataset
+from azureml.core import Workspace
 
 import pandas as pd
 import numpy as np
@@ -10,7 +11,7 @@ from sklearn.metrics import mean_squared_error
 from sklearn.metrics import mean_absolute_error
 
 run = Run.get_context()
-
+ws = Workspace.from_config()
 dataset = Dataset.get_by_name(ws, name='sales')
 dat = dataset.to_pandas_dataframe()
 
