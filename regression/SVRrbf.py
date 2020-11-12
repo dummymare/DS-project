@@ -19,8 +19,6 @@ dat = dat.loc[:, ['BOROUGH', 'BLOCK', 'LOT', 'ZIP CODE','RESIDENTIAL UNITS','COM
 y = dat['SALE PRICE'].values
 del dat['SALE PRICE']
 x = dat.values
-x = MinMaxScaler(feature_range=(min(y),max(y))).fit(x).transform(x)
-y = MinMaxScaler(feature_range=(min(y),max(y))).fit(y.reshape(-1,1)).transform(y.reshape(-1,1))
 
 svr_rbf = SVR(kernel='rbf', C=100, gamma=0.1, epsilon=.1)
 model = svr_rbf.fit(x, y)
