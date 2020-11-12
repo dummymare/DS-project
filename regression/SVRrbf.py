@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 
 from sklearn.svm import SVR
+from sklearn.preprocessing import MinMaxScaler
 from sklearn.metrics import r2_score
 from sklearn.metrics import mean_squared_error
 from sklearn.metrics import mean_absolute_error
@@ -18,6 +19,8 @@ dat = dat.loc[:, ['BOROUGH', 'BLOCK', 'LOT', 'ZIP CODE','RESIDENTIAL UNITS','COM
 y = dat['SALE PRICE'].values
 del dat['SALE PRICE']
 x = dat.values
+x = MinMaxScaler(feature_range=(-1,1)).fit(x).transform(x)
+y = MinMaxScaler(feature_range=(-1,1)).fit(y).transform(y)
 
 svr_rbf = SVR(kernel='rbf', C=100, gamma=0.1, epsilon=.1)
 model = svr_rbf.fit(x, y)
