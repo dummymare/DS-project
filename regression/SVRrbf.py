@@ -22,7 +22,7 @@ x = dat.values
 x = MinMaxScaler(feature_range=(-1,1)).fit(x).transform(x)
 y = MinMaxScaler(feature_range=(-1,1)).fit(y.reshape(-1,1)).transform(y.reshape(-1,1))
 
-svr_rbf = SVR(kernel='rbf', C=100, gamma=0.1, epsilon=.1)
+svr_rbf = SVR(kernel='rbf', C=1000, gamma=1, epsilon=.1)
 model = svr_rbf.fit(x, y)
 result = model.predict(x)
 
