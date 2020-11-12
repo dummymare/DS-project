@@ -31,7 +31,7 @@ del dat['SALE PRICE']
 x = dat.values
 
 #Training
-kf = KFold(n_splits = 10, shuffle = True)
+kf = KFold(n_splits = 5, shuffle = True)
 R2s = []
 MSEs = []
 MAEs = []
