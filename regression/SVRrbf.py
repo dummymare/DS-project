@@ -3,7 +3,6 @@ import pandas as pd
 import numpy as np
 
 from sklearn.svm import SVR
-from sklearn.preprocessing import MinMaxScaler
 from sklearn.metrics import r2_score
 from sklearn.metrics import mean_squared_error
 from sklearn.metrics import mean_absolute_error
