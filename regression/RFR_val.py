@@ -35,7 +35,7 @@ MSEs = []
 MAEs = []
 
 for train_index, test_index in kf.split(x):
-    regressor = RandomForestRegressor(n_estimators=args.nTrees, max_depth=10, n_jobs=2)
+    regressor = RandomForestRegressor(n_estimators=args.nTrees, max_depth=1, n_jobs=2)
     model = regressor.fit(x[train_index], y[train_index])
     result = model.predict(x[test_index])
 
