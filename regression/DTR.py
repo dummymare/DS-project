@@ -29,7 +29,7 @@ y_test = testset['SALE PRICE'].values
 del testset['SALE PRICE']
 x_test = testset.values
 
-DTregressor = regr_2 = DecisionTreeRegressor(min_samples_split=10)
+DTregressor = DecisionTreeRegressor(min_samples_split=10)
 model = DTregressor.fit(x, y)
 result = model.predict(x_test)
 
