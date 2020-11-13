@@ -8,7 +8,7 @@ from sklearn.metrics import mean_squared_error
 from sklearn.metrics import mean_absolute_error
 
 run = Run.get_context()
-dat = run.input_datasets['data'].to_pandas_dataframe()
+dat = run.input_datasets['trainset'].to_pandas_dataframe()
 testset = run.input_datasets['testset'].to_pandas_dataframe()
 
 dat['SALE PRICE'] = np.log(dat['SALE PRICE'])
