@@ -36,7 +36,7 @@ MSEs = []
 MAEs = []
 
 for train_index, test_index in kf.split(x):
-    regressor = AdaBoostRegressor(DecisionTreeRegressor(max_depth=10), n_estimators=args.nTrees)
+    regressor = AdaBoostRegressor(DecisionTreeRegressor(max_depth=1), n_estimators=args.nTrees)
     model = regressor.fit(x[train_index], y[train_index])
     result = model.predict(x[test_index])
 
