@@ -19,6 +19,7 @@ args = parser.parse_args()
 #Get run context
 run = Run.get_context()
 dat = run.input_datasets['data'].to_pandas_dataframe()
+dummies = run.input_datasets['dummies'].to_pandas_dataframe().iloc[:, 1:].values
 
 #Data transformaton
 dat['RESIDENTIAL UNITS'] = np.log(dat['RESIDENTIAL UNITS']+0.1)
@@ -26,7 +27,7 @@ dat['COMMERCIAL UNITS'] = np.log(dat['COMMERCIAL UNITS']+0.1)
 dat['TOTAL UNITS'] = np.log(dat['TOTAL UNITS']+0.1)
 
 dat['BLOCK'] = np.sqrt(dat['BLOCK'])
-dat['LOT'] = np.sqrt(dat['LOT'])
+dat['LOT'] = np.log(dat['LOT'])
 
 dat['SALE PRICE'] = np.log(dat['SALE PRICE'])
 dat['LAND SQUARE FEET'] = np.log(dat['LAND SQUARE FEET'])
@@ -42,7 +43,7 @@ dat = dat.loc[:, ['BLOCK', 'LOT', 'ZIP CODE','RESIDENTIAL UNITS','COMMERCIAL UNI
 y = dat['SALE PRICE'].values
 del dat['SALE PRICE']
 x = dat.values
-x = np.hstack((x, encoded))
+x = np.hstack((x, encoded, dummies))
 
 #Free memory
 del encoded

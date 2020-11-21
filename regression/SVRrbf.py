@@ -21,7 +21,7 @@ dat['COMMERCIAL UNITS'] = np.log(dat['COMMERCIAL UNITS']+0.1)
 dat['TOTAL UNITS'] = np.log(dat['TOTAL UNITS']+0.1)
 
 dat['BLOCK'] = np.sqrt(dat['BLOCK'])
-dat['LOT'] = np.sqrt(dat['LOT'])
+dat['LOT'] = np.log(dat['LOT'])
 
 dat['SALE PRICE'] = np.log(dat['SALE PRICE'])
 dat['LAND SQUARE FEET'] = np.log(dat['LAND SQUARE FEET'])

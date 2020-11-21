@@ -28,7 +28,7 @@ dat['COMMERCIAL UNITS'] = np.log(dat['COMMERCIAL UNITS']+0.1)
 dat['TOTAL UNITS'] = np.log(dat['TOTAL UNITS']+0.1)
 
 dat['BLOCK'] = np.sqrt(dat['BLOCK'])
-dat['LOT'] = np.sqrt(dat['LOT'])
+dat['LOT'] = np.log(dat['LOT'])
 
 dat['SALE PRICE'] = np.log(dat['SALE PRICE'])
 dat['LAND SQUARE FEET'] = np.log(dat['LAND SQUARE FEET'])
@@ -37,6 +37,7 @@ dat['GROSS SQUARE FEET'] = np.log(dat['GROSS SQUARE FEET'])
 #One hot encoding
 cateVars = ['BOROUGH', 'NEIGHBORHOOD', 'BUILDING CLASS CATEGORY', 'TAX CLASS AT PRESENT', 'TAX CLASS AT TIME OF SALE']
 encoded = OneHotEncoder().fit(dat.loc[:, cateVars]).transform(dat.loc[:, cateVars]).toarray()
+dummies = run.input_datasets['dummies'].to_pandas_dataframe().iloc[:, 1:].values
 
 #Continous variables
 dat = dat.loc[:, ['BLOCK', 'LOT', 'ZIP CODE','RESIDENTIAL UNITS','COMMERCIAL UNITS','TOTAL UNITS','LAND SQUARE FEET','GROSS SQUARE FEET','YEAR BUILT','SALE PRICE', 'IS BUILDING CLASS CHANGED', 'IS TAX CLASS CHANGED']]
@@ -44,7 +45,7 @@ dat = dat.loc[:, ['BLOCK', 'LOT', 'ZIP CODE','RESIDENTIAL UNITS','COMMERCIAL UNI
 y = dat['SALE PRICE'].values
 del dat['SALE PRICE']
 x = dat.values
-x = np.hstack((x, encoded))
+x = np.hstack((x, encoded, dummies))
 x = MinMaxScaler(feature_range=(min(y), max(y))).fit(x).transform(x)
 
 #Free memory
