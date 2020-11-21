@@ -4,7 +4,8 @@ import numpy as np
 import argparse
 import gc
 
-from sklearn.tree import DecisionTreeRegressor
+from sklearn.svm import LinearSVR
+from sklearn.preprocessing import MinMaxScaler
 from sklearn.preprocessing import OneHotEncoder
 from sklearn.model_selection import KFold
 from sklearn.metrics import r2_score
@@ -13,7 +14,8 @@ from sklearn.metrics import mean_absolute_error
 
 #Parsing arguments
 parser = argparse.ArgumentParser()
-parser.add_argument('--treeDepth', type=int, dest='depth', default=100)
+parser.add_argument('--C', type=int, dest='regular', default=100)
+parser.add_argument('--epsilon', type=float, dest='eps', default=0.1)
 args = parser.parse_args()
 
 #Get run context
@@ -46,6 +48,7 @@ y = dat['SALE PRICE'].values
 del dat['SALE PRICE']
 x = dat.values
 x = np.hstack((x, encoded, dummies))
+x = MinMaxScaler(feature_range=(min(y), max(y))).fit(x).transform(x)
 
 #Free memory
 del encoded
@@ -54,7 +57,7 @@ gc.collect()
 
 #Training
 kf = KFold(n_splits = 5, shuffle = True)
-Regressor = DecisionTreeRegressor(max_depth=args.depth)
+Regressor = LinearSVR(C=args.C, epsilon=args.eps)
 
 trainR2s = []
 trainMSEs = []
