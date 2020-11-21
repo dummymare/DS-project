@@ -47,7 +47,7 @@ dat = dat.loc[:, ['BLOCK', 'LOT', 'ZIP CODE','RESIDENTIAL UNITS','COMMERCIAL UNI
 y = dat['SALE PRICE'].values
 del dat['SALE PRICE']
 x = dat.values
-x = np.hstack((x, encoded, dummies))
+x = np.hstack((x, encoded))
 x = MinMaxScaler(feature_range=(min(y), max(y))).fit(x).transform(x)
 
 #Free memory

@@ -45,7 +45,7 @@ dat = dat.loc[:, ['BLOCK', 'LOT', 'ZIP CODE','RESIDENTIAL UNITS','COMMERCIAL UNI
 y = dat['SALE PRICE'].values
 del dat['SALE PRICE']
 x = dat.values
-x = np.hstack((x, encoded, dummies))
+x = np.hstack((x, encoded))
 
 #Free memory
 del encoded
