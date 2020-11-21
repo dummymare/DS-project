@@ -55,6 +55,8 @@ x = MinMaxScaler(feature_range=(min(y), max(y))).fit(x).transform(x)
 
 #Free memory
 del encoded
+del testset
+del dummiesTest
 gc.collect()
 
 #Training
