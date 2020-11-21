@@ -57,7 +57,7 @@ gc.collect()
 
 #Training
 kf = KFold(n_splits = 5, shuffle = True)
-Regressor = LinearSVR(C=args.C, epsilon=args.eps)
+Regressor = LinearSVR(C=args.regular, epsilon=args.eps)
 
 trainR2s = []
 trainMSEs = []
