@@ -68,12 +68,12 @@ result = model.predict(x[test_index:, :])
 trainResult = model.predict(x[:test_index, :])
 
 #output
-run.log("Train R square", r2_score(y[:test_index], result))
-run.log("Train Mean squared error", mean_squared_error(y[:test_index], result))
-run.log("Train Mean absolute error", mean_absolute_error(y[:test_index], result))
+run.log("Train R square", r2_score(y[:test_index], trainResult))
+run.log("Train Mean squared error", mean_squared_error(y[:test_index], trainResult))
+run.log("Train Mean absolute error", mean_absolute_error(y[:test_index], trainResult))
 
-run.log("R square", r2_score(y[test_index:], trainResult))
-run.log("Mean squared error", mean_squared_error(y[test_index:], trainResult))
-run.log("Mean absolute error", mean_absolute_error(y[test_index:], trainResult))
+run.log("R square", r2_score(y[test_index:], result))
+run.log("Mean squared error", mean_squared_error(y[test_index:], result))
+run.log("Mean absolute error", mean_absolute_error(y[test_index:], result))
 
 run.complete()
