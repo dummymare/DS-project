@@ -14,8 +14,6 @@ from sklearn.metrics import mean_absolute_error
 run = Run.get_context()
 dat = run.input_datasets['data'].to_pandas_dataframe()
 dummies = run.input_datasets['dummies'].to_pandas_dataframe().iloc[:, 1:].values
-dummies[(dummies == 'True')] = True
-dummies[(dummies == 'False')] = False
 
 #Data transformaton
 dat['RESIDENTIAL UNITS'] = np.log(dat['RESIDENTIAL UNITS']+0.1)
