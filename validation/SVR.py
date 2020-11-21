@@ -21,7 +21,7 @@ args = parser.parse_args()
 #Get run context
 run = Run.get_context()
 dat = run.input_datasets['data'].to_pandas_dataframe()
-dummies = run.input_datasets['dummies'].to_pandas_dataframe().iloc[1:, 1:].values
+dummies = run.input_datasets['dummies'].to_pandas_dataframe().iloc[:, 1:].values
 dummies[(dummies == 'True')] = True
 dummies[(dummies == 'False')] = False
 
