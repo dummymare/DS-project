@@ -41,7 +41,7 @@ encoded = OneHotEncoder().fit(dat.loc[:, cateVars]).transform(dat.loc[:, cateVar
 
 dummies = run.input_datasets['dummies'].to_pandas_dataframe().iloc[:, 1:].values
 dummiesTest = run.input_datasets['dummiesTest'].to_pandas_dataframe().iloc[:, 1:].values
-dummies = np.hstack((dummies, dummiesTest))
+dummies = np.vstack((dummies, dummiesTest))
 
 #Continous variables
 dat = dat.loc[:, ['BLOCK', 'LOT', 'ZIP CODE','RESIDENTIAL UNITS','COMMERCIAL UNITS','TOTAL UNITS','LAND SQUARE FEET','GROSS SQUARE FEET','YEAR BUILT','SALE PRICE', 'IS BUILDING CLASS CHANGED', 'IS TAX CLASS CHANGED']]
