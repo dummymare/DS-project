@@ -59,7 +59,7 @@ del dummiesTest
 gc.collect()
 
 #Training
-Regressor = RandomForestRegressor(max_depth=10, n_estimators=40)
+Regressor = RandomForestRegressor(max_depth=10, n_estimators=40, n_jobs=4)
 test_index = 111512
 model = Regressor.fit(x[:test_index, :], y[:test_index])
 
