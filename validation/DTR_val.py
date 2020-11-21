@@ -19,7 +19,6 @@ args = parser.parse_args()
 #Get run context
 run = Run.get_context()
 dat = run.input_datasets['data'].to_pandas_dataframe()
-dummies = run.input_datasets['dummies'].to_pandas_dataframe().values[:,1:]
 
 #Data transformaton
 dat['RESIDENTIAL UNITS'] = np.log(dat['RESIDENTIAL UNITS']+0.1)
@@ -43,11 +42,10 @@ dat = dat.loc[:, ['BLOCK', 'LOT', 'ZIP CODE','RESIDENTIAL UNITS','COMMERCIAL UNI
 y = dat['SALE PRICE'].values
 del dat['SALE PRICE']
 x = dat.values
-x = np.hstack((x, encoded, dummies))
+x = np.hstack((x, encoded))
 
 #Free memory
 del encoded
-del dummies
 gc.collect()
 
 #Training
