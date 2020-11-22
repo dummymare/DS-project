@@ -13,7 +13,8 @@ from sklearn.metrics import mean_absolute_error
 
 #Parsing arguments
 parser = argparse.ArgumentParser()
-parser.add_argument('--nLearner', type=int, dest='nLearner', default=100)
+parser.add_argument('--nLearner', type=int, dest='nLearner', default=50)
+parser.add_argument('--depth', type=int, dest='depth', default=5)
 args = parser.parse_args()
 
 #Get run context
