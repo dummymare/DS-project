@@ -52,7 +52,7 @@ gc.collect()
 
 #Training
 kf = KFold(n_splits = 5, shuffle = True)
-Regressor = xgb.XGBRegressor(max_depth=args.depth, n_estimators=args.nLearner, njobs=2)
+Regressor = xgb.XGBRegressor(max_depth=args.depth, n_estimators=args.nLearner, njobs=4)
 
 trainR2s = []
 trainMSEs = []
